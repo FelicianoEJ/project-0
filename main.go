@@ -3,6 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
+	"io/ioutil"
+	"log"
 	"os"
 
 	"github.com/FelicianoEJ/project-0/weathertool"
@@ -24,11 +26,19 @@ func main() {
 	} else {
 		location = args[0]
 	}
+
 	if location != "" {
 		fmt.Println("Fetching...")
 		var currWeather weathertool.Weather = weathertool.GetWeatherTemp(location)
 		tempF := weathertool.KelvinToFahrenheit(currWeather.Main.Temp)
 		fmt.Println("Temperature for", location, "is", tempF, "degrees Fahrenheit.")
+		if exp {
+			expJSON := weathertool.Weather2Json(currWeather)
+			err := ioutil.WriteFile("WeatherData", expJSON, 0644)
+			if err != nil {
+				log.Println("error:", err)
+			}
+		}
 	} else {
 		fmt.Println("Please provide an argumet after the program call.")
 	}

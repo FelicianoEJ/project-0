@@ -59,16 +59,25 @@ func GetWeatherTemp(location string) Weather {
 	defer resp.Body.Close()
 
 	if err != nil {
-		log.Print(err)
+		log.Println("error:", err)
 	} else {
 		body, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
-			log.Print(err)
+			log.Println("error:", err)
 		} else {
 			json.Unmarshal(body, &currentWeather)
 		}
 	}
 	return currentWeather
+}
+
+// Weather2Json uses json marshaller to transform the weather struct into a []byte of json
+func Weather2Json(weatherData Weather) []byte {
+	b, err := json.Marshal(weatherData)
+	if err != nil {
+		log.Println("error:", err)
+	}
+	return b
 }
 
 // KelvinToFahrenheit converts kelvin to fahrenheit.
