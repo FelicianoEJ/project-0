@@ -45,7 +45,7 @@ func init() {
 	log.SetOutput(logfile)
 
 	// Set the api key
-	config, configerr := ioutil.ReadFile("config.go")
+	config, configerr := ioutil.ReadFile("appconfig.json")
 	if configerr != nil {
 		log.Fatalln("fatal error: could not read file appconfig.json.")
 	}
