@@ -11,7 +11,7 @@ import (
 func main() {
 	if location != "" {
 		fmt.Println("Fetching...")
-		var currWeather weathertool.Weather = weathertool.GetWeather(location)
+		var currWeather weathertool.Weather = weathertool.GetWeather(location, apikey.APPID)
 		tempF := weathertool.KelvinToFahrenheit(currWeather.Main.Temp)
 		fmt.Println("Temperature for", location, "is", tempF, "degrees Fahrenheit.")
 		if exp {

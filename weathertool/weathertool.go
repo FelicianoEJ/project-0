@@ -52,14 +52,14 @@ type Weather struct {
 
 // GetWeather utilizes HTTP GET protocols to retrieve
 // web api from OpenWeather in order to use it in the cli app
-func GetWeather(location string) Weather {
+func GetWeather(location string, apikey string) Weather {
 	var currentWeather Weather
-	resp, err := http.Get("http://api.openweathermap.org/data/2.5/weather?q=" + location + "&APPID=f60c52fb199f51b3d8c425bc6f2c2752")
-	defer resp.Body.Close()
+	resp, err := http.Get("http://api.openweathermap.org/data/2.5/weather?q=" + location + "&APPID=" + apikey)
 	if err != nil {
 		log.Fatalln("error:", err)
 	} else {
 		body, err := ioutil.ReadAll(resp.Body)
+		resp.Body.Close()
 		if err != nil {
 			log.Fatalln("error:", err)
 		} else {
