@@ -16,7 +16,7 @@ func main() {
 		fmt.Println("Temperature for", location, "is", tempF, "degrees Fahrenheit.")
 		if exp {
 			expJSON := weathertool.Weather2Json(currWeather)
-			err := ioutil.WriteFile("WeatherData", expJSON, 0644)
+			err := ioutil.WriteFile("WeatherData.json", expJSON, 0644)
 			if err != nil {
 				log.Println("error:", err)
 			}
