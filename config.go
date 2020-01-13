@@ -45,12 +45,15 @@ func init() {
 	log.SetOutput(logfile)
 
 	// Set the api key
-	config, configerr := ioutil.ReadFile("appconfig.json")
-	if configerr != nil {
-		log.Fatalln("fatal error: could not read file appconfig.json.")
+	var config []byte
+	config, err = ioutil.ReadFile("appconfig.json")
+	if err != nil {
+		log.Println(err)
+		log.Fatalln("Fatal error: could not read file appconfig.json.")
 	}
-	jsonerr := json.Unmarshal(config, &apikey)
-	if jsonerr != nil || apikey.APPID == "" {
-		log.Fatalln("error: appconfig.json is corrupted or you are missing apikey to access weather data.")
+	err = json.Unmarshal(config, &apikey)
+	if err != nil || apikey.APPID == "" {
+		log.Println(err)
+		log.Fatalln("Fatal error: appconfig.json is corrupted or you are missing apikey to access weather data.")
 	}
 }
