@@ -9,24 +9,25 @@ import (
 	"os"
 )
 
-// APIKey ...
+// APIKey is the structure that will contain the apikey to the openweather api.
+// This structure makes possible the use of the json.Unmarshal() function.
 type APIKey struct {
 	APPID string `json:"APPID"`
 }
 
-// Exp ...
+// Exp is the boolean value for the -e flag.
 var Exp bool
 
-// Location ...
+// Location is the argument the user provides.
 var Location string
 
-// Args ...
+// Args holds all the arguments.
 var Args []string
 
-// Apikey ...
+// Apikey is the actual instance of the APIKey struct.
 var Apikey APIKey
 
-// Logfile ...
+// Logfile is an instance of the struc File that is used to dump all the logs details.
 var Logfile *os.File // defer Logfile.Close()
 
 func init() {
@@ -39,7 +40,7 @@ func init() {
 
 	// Set Location data depending on the argument
 	if len(Args) < 2 {
-		Location = ""
+		Location = "" // Defaults Location to an empty string
 	} else if Exp {
 		Location = Args[2] // If flag Exp is set then Location is Args[2]
 	} else {
@@ -59,11 +60,11 @@ func init() {
 	config, err = ioutil.ReadFile("config/appconfig.json")
 	if err != nil {
 		log.Println(err)
-		log.Fatalln("Fatal error: could not read file appconfig.json.")
+		log.Fatalln("error: could not read file appconfig.json.")
 	}
 	err = json.Unmarshal(config, &Apikey)
 	if err != nil || Apikey.APPID == "" {
 		log.Println(err)
-		log.Fatalln("Fatal error: appconfig.json is corrupted or you are missing apikey to access weather data.")
+		log.Fatalln("error: appconfig.json is corrupted or you are missing apikey to access weather data.")
 	}
 }
