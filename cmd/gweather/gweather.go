@@ -5,16 +5,17 @@ import (
 	"io/ioutil"
 	"log"
 
-	"github.com/FelicianoEJ/project-0/weathertool"
+	"github.com/FelicianoEJ/project-0/config"
+	"github.com/FelicianoEJ/project-0/internal/weathertool"
 )
 
 func main() {
-	if location != "" {
+	if config.Location != "" {
 		fmt.Println("Fetching...")
-		var currWeather weathertool.Weather = weathertool.GetWeather(location, apikey.APPID)
+		var currWeather weathertool.Weather = weathertool.GetWeather(config.Location, config.Apikey.APPID)
 		tempF := weathertool.KelvinToFahrenheit(currWeather.Main.Temp)
-		fmt.Println("Temperature for", location, "is", tempF, "degrees Fahrenheit.")
-		if exp {
+		fmt.Println("Temperature for", config.Location, "is", tempF, "degrees Fahrenheit.")
+		if config.Exp {
 			expJSON := weathertool.Weather2Json(currWeather)
 			err := ioutil.WriteFile("WeatherData.json", expJSON, 0644)
 			if err != nil {
