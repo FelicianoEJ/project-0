@@ -9,7 +9,7 @@ import (
 	"os"
 )
 
-// APIKey is the structure that will contain the apikey to the openweather api.
+// Config is the structure that will contain the apikey to the openweather api.
 // This structure makes possible the use of the json.Unmarshal() function.
 type Config struct {
 	APPID              string `json:"APPID"`

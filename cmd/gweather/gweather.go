@@ -39,7 +39,7 @@ func main() {
 			defer db.Close()
 
 			// Migrate the schema
-			db.AutoMigrate(&weathermodel.WeatherModel{})
+			// db.AutoMigrate(&weathermodel.WeatherModel{})
 
 			// Create
 			var model weathermodel.WeatherModel = weathermodel.WeatherModel{

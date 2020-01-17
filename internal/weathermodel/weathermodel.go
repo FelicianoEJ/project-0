@@ -23,3 +23,8 @@ type WeatherModel struct {
 	Sunrise     int
 	Sunset      int
 }
+
+// ListWeatherModel ...
+type ListWeatherModel struct {
+	WMList []WeatherModel
+}
