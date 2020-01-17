@@ -2,11 +2,16 @@
 
 Project 0 is command line tool used to retrieve temperatures from cities around the globe through the use of web api.
 
-To make it work simple type the command for the app and provide an argument.
+To make it work simply type the command for the app and provide an argument.
+If the city name has spaces between the type the argument unde double quotes.
 
 *For example:*
 
 `command-name Ponce,PR`
+
+or
+
+`command-name "San Diego"`
 
 ## How to build and use
 
