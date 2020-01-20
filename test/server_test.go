@@ -2,39 +2,26 @@ package test
 
 import (
 	"io/ioutil"
-	"log"
 	"net/http"
-	"os"
+	"strconv"
 	"testing"
 )
 
 // GetAlot ...
 func GetAlot() bool {
-	resp, _ := http.Get("http://localhost:8080/weather?id=1")
-	body, _ := ioutil.ReadAll(resp.Body)
-	if len(string(body)) < 1 {
-		return false
+	for i := 1; i < 4; i++ {
+		resp, _ := http.Get("http://localhost:8080/weather?id=" + strconv.Itoa(i))
+		body, _ := ioutil.ReadAll(resp.Body)
+		if string(body) == "" && resp.StatusCode != 200 {
+			return false
+		}
 	}
-	// resp, _ = http.Get("http://localhost:8080/weather?id=2")
-	// body, _ = ioutil.ReadAll(resp.Body)
-	// if len(string(body)) < 1 {
-	// 	return false
-	// }
-	// resp, _ = http.Get("http://localhost:8080/weather?id=3")
-	// body, _ = ioutil.ReadAll(resp.Body)
-	// if len(string(body)) < 1 {
-	// 	return false
-	// }
 	return true
 }
 
 // TestGetAlot ...
 func TestGetAlot(t *testing.T) {
-	// Logger
-	logfile, _ := os.OpenFile("logs/testlog.txt", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
-	log.SetOutput(logfile)
-
-	for i := 0; i < 1000; i++ {
+	for i := 0; i < 10000; i++ {
 		var ret bool = GetAlot()
 		t.Log("test", i+1, "returned", ret)
 		if !ret {

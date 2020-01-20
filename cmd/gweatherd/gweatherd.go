@@ -37,6 +37,8 @@ func main() {
 	}
 	defer db.Close()
 
+	http.Handle("/", http.FileServer(http.Dir("web")))
+
 	http.HandleFunc("/weather", func(w http.ResponseWriter, r *http.Request) {
 		id, _ := strconv.Atoi(r.FormValue("id"))
 		output, err := json.Marshal(db.Where("ID = ?", id).First(&weathermodel.WeatherModel{}))
