@@ -17,6 +17,11 @@ or
 
 Clone the project from github or use the `go get` tool to get this project.
 
+`go get -u github.com/FelicianoEJ/project-0 `
+
+
+**Note: Make sure to run with flag -u to get all the dependencies.**
+
 The project is separated into 2 diferent executables unde the `/cmd` folder.
 
 You can either build or run the projet.
