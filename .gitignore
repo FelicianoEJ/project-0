@@ -1,7 +1,7 @@
 /gweather
 /gweatherd
 
-logs
+log.txt
 
 *.db
 
