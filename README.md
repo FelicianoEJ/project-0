@@ -56,3 +56,19 @@ Temperature for Miami is 73.8 degrees Fahrenheit.
 ```bash
 gweather -e Miami
 ```
+
+## Features
+- [x] Documentation
+- [x] Unit testing
+- [x] Benchmarking
+- [x] Logging
+- [x] API Library
+- [x] CLI flags
+- [ ] Environment variables
+- [x] Concurrency
+- [x] Data Persistance
+- [x] HTTP/HTTPS API
+
+## Presentation
+- [ ] 5 minute live demonstration
+- [ ] Slides & visual aides
