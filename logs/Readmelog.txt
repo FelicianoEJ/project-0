@@ -1,0 +1,1 @@
+This folder is needed by the program so it can store its logs.
