@@ -17,8 +17,13 @@ or
 
 Clone the project from github or use the `go get` tool to get this project.
 
-`go get -u github.com/FelicianoEJ/project-0 `
+`go get -u -d github.com/FelicianoEJ/project-0 `
 
+If the dependencies are not downloaded properly then run the following commands to get them
+
+`go get -u github.com/jinzhu/gorm `
+
+`go get -u github.com/jinzhu/gorm/dialects/sqlite`
 
 **Note: Make sure to run with flag -u to get all the dependencies.**
 
