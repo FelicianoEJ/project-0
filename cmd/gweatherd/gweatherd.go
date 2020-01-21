@@ -40,6 +40,18 @@ func main() {
 	http.Handle("/", http.FileServer(http.Dir("web")))
 
 	http.HandleFunc("/weather", func(w http.ResponseWriter, r *http.Request) {
+		name := r.FormValue("city")
+		output, err := json.Marshal(db.Where("name = ?", name).First(&weathermodel.WeatherModel{}))
+		if err != nil {
+			w.WriteHeader(http.StatusTeapot)
+			fmt.Fprintln(w, err)
+			return
+		}
+		w.Header().Set("Content-Type", "application/json")
+		fmt.Fprintln(w, string(output))
+	})
+
+	http.HandleFunc("/weatherbyid", func(w http.ResponseWriter, r *http.Request) {
 		id, _ := strconv.Atoi(r.FormValue("id"))
 		output, err := json.Marshal(db.Where("ID = ?", id).First(&weathermodel.WeatherModel{}))
 		if err != nil {

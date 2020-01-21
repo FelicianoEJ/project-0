@@ -5,24 +5,45 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <meta name="theme-color" content="#563d7c">
+        <style>
+            body {
+                background-image: url('https://images.pexels.com/photos/459451/pexels-photo-459451.jpeg');
+                background-repeat: no-repeat;
+                background-attachment: fixed;  
+                background-size: cover;
+            }
+            </style> 
     </head>
     <body class="text-center">
         <div>
-            <h1>Weather Data</h1>
-
             <br>
-
-            <h4>Provide an id</h4>
-
-            <form action="/weather?id=" method="POST">
-                <input type="number" name="id" placeholder="Item id" required/>
-                <button class="btn btn-primary" type="submit">Submit</button>
-            </form>
+            <br>
+            <div class="badge badge-dark text-wrap" style="width: 25rem;">
+                <h1 class="my-1 text-light">Weather Data</h1>
+            </div>
+            <br>
+            <br>
+            <br>
+            <h4 class="text-light">Provide an id</h4>
+            <br>
+            <input id="id" type="text" placeholder="Item id" required/>
+            <br>
+            <br>
+            <button class="btn btn-primary" onclick="redirect()">Submit</button>
         </div>
-
     </body>
+    <script>
+        function redirect(){
+            var id = document.getElementById("id").value;
+            if(id != ""){
+                window.location.href = "http://localhost:8080/weather?city=" + id;
+            }
+            else{
+                window.location.reload();
+            }
+        }
+    </script>   
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
