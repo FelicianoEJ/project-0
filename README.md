@@ -57,6 +57,12 @@ Temperature for Miami is 73.8 degrees Fahrenheit.
 gweather -e Miami
 ```
 
+`-db` is used to store the weather data returned by the api into the specified sqlite database under the config.json file.
+
+```bash
+gweather -db "New York"
+```
+
 ## Features
 - [x] Documentation
 - [x] Unit testing
